@@ -1,26 +1,26 @@
 class Blucli < Formula
   desc "Play, group, and automate BluOS"
   homepage "https://github.com/steipete/blucli"
-  version "0.1.5"
+  version "0.1.7"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/steipete/blucli/releases/download/v0.1.5/blucli_0.1.5_darwin_arm64.tar.gz"
-      sha256 "2c299ea44715e4b370d679157e11be634ef50be05c01758d77ba6edaece51bd1"
+      url "https://github.com/steipete/blucli/releases/download/v0.1.7/blucli_0.1.7_darwin_arm64.tar.gz"
+      sha256 "4a7305d991e5d0bdc2eaac752bee5e9921bba787f2649e6f04340b0c407f5507"
     else
-      url "https://github.com/steipete/blucli/releases/download/v0.1.5/blucli_0.1.5_darwin_amd64.tar.gz"
-      sha256 "d404fa395d3d100fecedd60ffe4e99ca4de00e9826c38c2a8d4a1c438137ecf0"
+      url "https://github.com/steipete/blucli/releases/download/v0.1.7/blucli_0.1.7_darwin_amd64.tar.gz"
+      sha256 "98c3b0f0873e41f023c7c95cd1069b597bd6e5c376939d15df52fe42e50cfc5e"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/steipete/blucli/releases/download/v0.1.5/blucli_0.1.5_linux_arm64.tar.gz"
-      sha256 "e503ce2c085b5ab55883a0784d43ad5d81152b13dcda72d272f25310bae8d40b"
+      url "https://github.com/steipete/blucli/releases/download/v0.1.7/blucli_0.1.7_linux_arm64.tar.gz"
+      sha256 "ccd2fe4005187b4ad07744b4e4bd571cf47585005065c3b8547dbb332cda5939"
     else
-      url "https://github.com/steipete/blucli/releases/download/v0.1.5/blucli_0.1.5_linux_amd64.tar.gz"
-      sha256 "3ec5d6a1293d3abd251dd83afa56f1eb5ad5f7a62a73b1440fb1d9fe151d0585"
+      url "https://github.com/steipete/blucli/releases/download/v0.1.7/blucli_0.1.7_linux_amd64.tar.gz"
+      sha256 "436c4fc1960145709f48147a99670147fa1b77f0662002f7da4979cdb0dce0cb"
     end
   end
 
@@ -31,6 +31,6 @@ class Blucli < Formula
   end
 
   test do
-    assert_match version, shell_output("#{bin}/blu --version")
+    assert_match version.to_s, shell_output("#{bin}/blu --version")
   end
 end

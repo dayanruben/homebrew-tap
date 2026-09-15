@@ -1,37 +1,41 @@
 class Sag < Formula
   desc "Command-line ElevenLabs TTS with mac-style flags"
   homepage "https://github.com/steipete/sag"
-  url "https://github.com/steipete/sag/releases/download/v0.4.1/sag_0.4.1_darwin_universal.tar.gz"
-  sha256 "d40034b62617d472078093ba5bf7307eb729d170412169e9d5fe6dac3834cef6"
+  version "0.4.3"
   license "MIT"
 
-  on_linux do
-    on_arm do
-      url "https://github.com/steipete/sag/archive/refs/tags/v#{version}.tar.gz"
-      sha256 "ee73ea2d703887c171968d6d113a60d1e9de649950fa44fee96ca2d484e94d5c"
+  on_macos do
+    depends_on macos: :sequoia
 
-      depends_on "go" => :build
-      depends_on "pkgconf" => :build
-      depends_on "alsa-lib"
-    end
-
-    on_intel do
-      url "https://github.com/steipete/sag/releases/download/v#{version}/sag_#{version}_linux_amd64.tar.gz"
-      sha256 "104bbbc6a54fea6d0405d458ebba24f7f14fc4c90c7871f207d7589eba6411d2"
+    if Hardware::CPU.arm?
+      url "https://github.com/steipete/sag/releases/download/v0.4.3/sag_0.4.3_darwin_arm64.tar.gz"
+      sha256 "7bce8158870fa0186dcce2caa2f9cdab0871b479e8c9261b51250c8623636f14"
+    else
+      url "https://github.com/steipete/sag/releases/download/v0.4.3/sag_0.4.3_darwin_amd64.tar.gz"
+      sha256 "7a24ed7cd2ee02d526226a846732089fa8239ca31a2a854aed21ad4686144bfb"
     end
   end
 
-  def install
-    if File.exist?("sag")
-      bin.install "sag"
-    else
-      if OS.linux? && Hardware::CPU.arm?
-        ENV["CGO_ENABLED"] = "1"
-        ENV.append "CGO_LDFLAGS", "-Wl,-rpath,#{formula_opt_lib("alsa-lib")}"
-      end
+  on_linux do
+    depends_on "patchelf" => :build
+    depends_on "alsa-lib"
 
-      system "go", "build", *std_go_args(ldflags: "-s -w"), "./cmd/sag"
+    if Hardware::CPU.arm?
+      url "https://github.com/steipete/sag/releases/download/v0.4.3/sag_0.4.3_linux_arm64.tar.gz"
+      sha256 "176be4b6efd455f95d9ce3c4298000be96601c4d0d9769ad379131c8a509f5eb"
+    else
+      url "https://github.com/steipete/sag/releases/download/v0.4.3/sag_0.4.3_linux_amd64.tar.gz"
+      sha256 "3d76ab25e42605261a84c0e0f86c5a83ab18e697d1b0a774528eb261030c4de2"
     end
+  end
+
+  skip_clean "bin/sag"
+
+  def install
+    bin.install "sag"
+    return unless OS.linux?
+
+    system "patchelf", "--set-rpath", formula_opt_lib("alsa-lib"), bin/"sag"
   end
 
   test do
