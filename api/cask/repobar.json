@@ -88,7 +88,7 @@
     "arm64_sequoia"
   ],
   "tap": "steipete/tap",
-  "tap_git_head": "49b38357d94622eb82fbd7e0597dbd9b549966e3",
+  "tap_git_head": "cfd4b689cec19b9fcb88fee95d291f799c1beb39",
   "token": "repobar",
   "url": "https://github.com/steipete/RepoBar/releases/download/v0.9.0/RepoBar-0.9.0.zip",
   "url_specs": {},
