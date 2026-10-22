@@ -73,10 +73,10 @@
   "pinned_version": null,
   "rename": [],
   "ruby_source_checksum": {
-    "sha256": "ade915a47efd79cd06a02dc0e60975cfc432f66604abfa1e826f8422d8d06a1a"
+    "sha256": "2c74b19a7a4700a85ba6af6bde7a0e6deed156493521fee3d4635bcf6c923363"
   },
   "ruby_source_path": "Casks/trimmy.rb",
-  "sha256": "b6450d549cd3e659d26131d85923219389fb9ef0e917c6c480687a4c163b502c",
+  "sha256": "e268eaf4b3412f4deef33e6adc597496a5500ca08d58af9c9bb329d3049bb251",
   "skip_livecheck": false,
   "supported_platforms": [
     "arm64_golden_gate",
@@ -84,10 +84,10 @@
     "arm64_sequoia"
   ],
   "tap": "steipete/tap",
-  "tap_git_head": "3e591fbed5835915a6726aa6b500829927a4ab2b",
+  "tap_git_head": "a17b2007a5b2c7a2bcdf34704218418b535f2a17",
   "token": "trimmy",
-  "url": "https://github.com/steipete/Trimmy/releases/download/v0.11.2/Trimmy-0.11.2.zip",
+  "url": "https://github.com/steipete/Trimmy/releases/download/v0.11.5/Trimmy-0.11.5.zip",
   "url_specs": {},
   "variations": {},
-  "version": "0.11.2"
+  "version": "0.11.5"
 }
